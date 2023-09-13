@@ -21,6 +21,8 @@ public class PlayerController : MonoBehaviourPunCallbacks, IPunObservable
     [Header ("Components")]
     public Rigidbody rig;
     public Player photonPlayer;
+    public Color[] color;
+    public GameObject pumpkin;
 
     void Update(){
         Move();
@@ -72,6 +74,7 @@ public class PlayerController : MonoBehaviourPunCallbacks, IPunObservable
         if(!photonView.IsMine){
             rig.isKinematic = true;
         }
+        pumpkin.GetComponent<Renderer>().material.SetColor("_Color", color[id - 1]);
     }
 
     public void SetHat(bool hasHat){

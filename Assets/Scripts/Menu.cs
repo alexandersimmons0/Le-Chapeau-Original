@@ -35,7 +35,7 @@ public class Menu : MonoBehaviourPunCallbacks
 
     public void OnCreatedRoomButton(TMP_InputField roomNameInput){
         RoomOptions roomOptions = new RoomOptions();
-        roomOptions.MaxPlayers = 1;
+        roomOptions.MaxPlayers = 4;
         PhotonNetwork.CreateRoom(roomNameInput.text, roomOptions);
         //NetworkManager.instance.CreateRoom(roomNameInput.text, roomOptions);
     }

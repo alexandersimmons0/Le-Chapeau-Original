@@ -180,6 +180,12 @@ MonoBehaviour:
   - {x: 6, y: 3.1, z: 6}
   - {x: 6, y: 3.1, z: -6}
   rig: {fileID: 4651424641360492827}
+  color:
+  - {r: 0.7565093, g: 0, b: 1, a: 0}
+  - {r: 1, g: 0.30980393, b: 0, a: 0}
+  - {r: 0, g: 1, b: 0, a: 0}
+  - {r: 0, g: 0.5529412, b: 1, a: 0}
+  pumpkin: {fileID: 4227360397681543454}
 --- !u!1001 &230670166456120729
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -339,5 +345,10 @@ PrefabInstance:
 --- !u!4 &17607006685529399 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 9e9f553ad98ac9b4887dc53dadebe420, type: 3}
+  m_PrefabInstance: {fileID: 555125862193816284}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &4227360397681543454 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -4819223349682164798, guid: 9e9f553ad98ac9b4887dc53dadebe420, type: 3}
   m_PrefabInstance: {fileID: 555125862193816284}
   m_PrefabAsset: {fileID: 0}
