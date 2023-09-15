@@ -6,7 +6,7 @@ using Photon.Realtime;
 
 public class PlayerController : MonoBehaviourPunCallbacks, IPunObservable
 {
-    private bool respawn;
+    private bool respawn = false;
 
     [HideInInspector]
     public int id;
@@ -26,9 +26,6 @@ public class PlayerController : MonoBehaviourPunCallbacks, IPunObservable
 
     void Update(){
         Move();
-        if(Input.GetKeyDown(KeyCode.Space)){
-            TryJump();
-        }
         if(PhotonNetwork.IsMasterClient){
             if(curHatTime >= GameManager.instance.timeToWin && !GameManager.instance.gameEnded){
                 GameManager.instance.gameEnded = true;
@@ -38,7 +35,7 @@ public class PlayerController : MonoBehaviourPunCallbacks, IPunObservable
         if(hatObject.activeInHierarchy){
             curHatTime += Time.deltaTime;
         }
-        if(this.transform.position.y <= -1&& !respawn){
+        if(this.transform.position.y < 1 && !respawn){
             respawn = true;
             SetHat(false);
             Invoke("Respawn", 2f);
@@ -96,7 +93,7 @@ public class PlayerController : MonoBehaviourPunCallbacks, IPunObservable
             if(GameManager.instance.CanGetHat()){
                 GameManager.instance.photonView.RPC("GiveHat", RpcTarget.All, id, false);
             }
-        }
+        }         
     }
 
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info){

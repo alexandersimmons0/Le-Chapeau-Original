@@ -18,7 +18,7 @@ public class GameManager : MonoBehaviourPunCallbacks
 
     [Header ("Players")]
     public string playerPrefabLocation;
-    public Vector3[] spawnPoints;
+    public List<Vector3> spawnPoints;
     public PlayerController[] players;
     public int playerWithHat;
     private int playersInGame;
@@ -59,7 +59,9 @@ public class GameManager : MonoBehaviourPunCallbacks
     }
 
     void SpawnPlayer(){
-        GameObject playerObj = PhotonNetwork.Instantiate(playerPrefabLocation, spawnPoints[Random.Range(0,spawnPoints.Length)], Quaternion.identity);
+        int spawnedAt = Random.Range(0,spawnPoints.Count);
+        GameObject playerObj = PhotonNetwork.Instantiate(playerPrefabLocation, spawnPoints[spawnedAt], Quaternion.identity);
+        spawnPoints.Remove(spawnPoints[spawnedAt]);
         PlayerController playerScript = playerObj.GetComponent<PlayerController>();
         playerScript.photonView.RPC("Initialize", RpcTarget.All, PhotonNetwork.LocalPlayer);
     }
